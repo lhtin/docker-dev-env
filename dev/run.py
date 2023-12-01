@@ -12,8 +12,9 @@ parser.add_argument('--volume', nargs="+", help="Volume map when run docker, lik
 args = parser.parse_args()
 
 volume_map = ""
+paths = map(lambda p: p + ":" + p, map(lambda p: os.path.abspath(p), args.volume))
 if args.volume:
-    volume_map = "-v " + (" -v ".join(map(lambda path: os.path.abspath(path), args.volume)))
+    volume_map = "-v " + (" -v ".join(paths))
 docker_run_cmd = f"docker run -d -p 127.0.0.1:{args.ssh_port}:22/tcp {volume_map} {args.image_name}"
 
 if args.sudo:

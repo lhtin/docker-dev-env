@@ -2,7 +2,7 @@
 
 import argparse
 import subprocess
-import sys
+import sys, os
 
 parser = argparse.ArgumentParser(description="Build docker image")
 parser.add_argument('--image-name', type=str, required=True, help="the real image name will suffix with the use name")
@@ -13,7 +13,7 @@ args = parser.parse_args()
 
 volume_map = ""
 if args.volume:
-    volume_map = "-v " + (" -v ".join(args.volume))
+    volume_map = "-v " + (" -v ".join(map(lambda path: os.path.abspath(path), args.volume)))
 docker_run_cmd = f"docker run -d -p 127.0.0.1:{args.ssh_port}:22/tcp {volume_map} {args.image_name}"
 
 if args.sudo:

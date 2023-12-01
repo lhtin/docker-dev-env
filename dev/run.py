@@ -24,6 +24,7 @@ print(docker_run_cmd)
 container_id = subprocess.check_output(docker_run_cmd, shell=True, text=True).strip()
 user_name = subprocess.check_output('id -u -n', shell=True, text=True).strip()
 
-print(f"you can view the output by run: docker logs -f {container_id}")
-print(f"you can kill the daemon container by run: docker container kill {container_id}")
-print(f"now you can use ssh login this container by run: ssh {user_name}@localhost -p {args.ssh_port}")
+sudo = "sudo " if args.sudo else ""
+print(f"you can view the output by run: `{sudo}docker logs -f {container_id}`")
+print(f"you can kill the daemon container by run: `{sudo}docker container kill {container_id}`")
+print(f"now you can use ssh login this container by run (password is 1): `ssh {user_name}@localhost -p {args.ssh_port}`")

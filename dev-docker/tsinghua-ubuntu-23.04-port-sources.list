@@ -1,0 +1,5 @@
+# Ubuntu 23.04 riscv64
+deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ lunar main restricted universe multiverse
+deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ lunar-updates main restricted universe multiverse
+deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ lunar-backports main restricted universe multiverse
+deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ lunar-security main restricted universe multiverse

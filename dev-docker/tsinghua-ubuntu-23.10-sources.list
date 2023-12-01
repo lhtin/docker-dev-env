@@ -1,0 +1,5 @@
+# Ubuntu 23.10 x86_64
+deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ mantic main restricted universe multiverse
+deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ mantic-updates main restricted universe multiverse
+deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ mantic-backports main restricted universe multiverse
+deb http://security.ubuntu.com/ubuntu/ mantic-security main restricted universe multiverse

@@ -1,8 +1,3 @@
-# riscv64
-# FROM riscv64/ubuntu:23.04
-# RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak
-# COPY tsinghua-ubuntu-23.04-port-sources.list /etc/apt/sources.list
-
 # x86
 FROM ubuntu:23.10
 RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak

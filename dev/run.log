@@ -1,0 +1,1 @@
+[INFO][2023-12-04 15:09:59,026] sudo docker run -d -p 127.0.0.1:2223:22/tcp -v /home/lhtin-rivai/Projects:/home/lhtin-rivai/Projects -v /home/lhtin-rivai/apps:/home/lhtin-rivai/apps test-image-tintin

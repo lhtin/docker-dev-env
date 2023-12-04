@@ -6,7 +6,7 @@
 
 1. 构建镜像：`./build.sh`
 2. 启动RISC-V Ubuntu服务器：`docker run -it --publish 127.0.0.1:2223:2223/tcp -v /work/home/lding/docker:/work/home/lding/docker riscv-ubuntu-lding python3 ~/run.py --img /work/home/lding/docker/imgs/ubuntu-23.10-preinstalled-server-riscv64.img --ssh-port 2223 --cpu 64 --memory 32G`
-   1. 这里的cpu核数指定了之后就不能再修改
+   1. 这里的cpu核数目前不能超过8核，否则启动不了
    2. 登录（默认账号密码：ubuntu:ubuntu，第一次登录需要修改）
    3. 修改密码为1：`echo "ubuntu:1" | sudo chpasswd`
    4. 切换到清华镜像：https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu-ports

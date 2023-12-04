@@ -15,7 +15,7 @@ mv ohmyzsh-master home/.oh-my-zsh
 
 wget https://github.com/zsh-users/zsh-syntax-highlighting/archive/refs/heads/master.zip -O zsh-syntax-highlighting-master.zip
 unzip zsh-syntax-highlighting-master.zip
-mv zsh-syntax-highlighting-master home/zsh-synatx-highlighting
+mv zsh-syntax-highlighting-master home/zsh-syntax-highlighting
 
 wget https://github.com/zsh-users/zsh-autosuggestions/archive/refs/heads/master.zip -O zsh-autosuggestions-master.zip
 unzip zsh-autosuggestions-master.zip

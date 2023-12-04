@@ -1,12 +1,7 @@
 # riscv64
-# FROM riscv64/ubuntu:23.04
-# RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak
-# COPY tsinghua-ubuntu-23.04-port-sources.list /etc/apt/sources.list
-
-# x86
-FROM ubuntu:23.10
+FROM riscv64/ubuntu:23.04
 RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak
-COPY tsinghua-ubuntu-23.10-sources.list /etc/apt/sources.list
+COPY tsinghua-ubuntu-23.04-port-sources.list /etc/apt/sources.list
 
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update

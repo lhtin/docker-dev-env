@@ -1,6 +1,11 @@
 # RISC-V Ubuntu虚拟机使用指南
 
-> https://wiki.ubuntu.com/RISC-V/QEMU
+> 官方使用指南：https://wiki.ubuntu.com/RISC-V/QEMU
+> 镜像下载：https://ubuntu.com/download/risc-v
+
+## 环境准备
+
+执行 `./pre.sh` 下载所需的包。
 
 ## 使用原始的img进行初始化
 
@@ -28,7 +33,7 @@
       sed -i -E "s/plugins=\(git\)/plugins=\(zsh-autosuggestions zsh-syntax-highlighting\)/" ~/.zshrc
       ```
    8. 启动 SSH Server：`sudo systemctl enable ssh`
-3. 验证下ssh登录：`ssh ubuntu@localhost -p 2223` 密码1
+4. 验证下ssh登录：`ssh ubuntu@localhost -p 2223` 密码1
 
 ## 使用初始化好的img
 

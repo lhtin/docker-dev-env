@@ -1,4 +1,7 @@
 ```
+# 准备环境（包括zsh、gdb、vim、git等配置）
+./pre.sh
+
 # 构建镜像
 ./build.py --image-name my-dev --build-dir . 
 

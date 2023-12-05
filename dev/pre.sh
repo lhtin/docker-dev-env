@@ -17,4 +17,7 @@ mv zsh-autosuggestions-master home/zsh-autosuggestions
 unzip ../common/gdb-python.zip
 mv gdb-python home/.gdb-python
 
-cp ../common/config/.vimrc ../common/config/.gdbinit home/
+cp ../common/config/.vimrc \
+   ../common/config/.gdbinit \
+   ../common/config/.gitconfig \
+   home/

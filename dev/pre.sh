@@ -13,3 +13,6 @@ mv zsh-syntax-highlighting-master home/zsh-syntax-highlighting
 
 unzip ../common/zsh-autosuggestions-master.zip
 mv zsh-autosuggestions-master home/zsh-autosuggestions
+
+unzip ../common/gdb-python.zip
+mv gdb-python .gdbinit home/

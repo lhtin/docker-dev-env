@@ -57,7 +57,7 @@ def run():
   volume_map = ""
   if args.volume:
     paths = map(lambda p: p + ":" + p, map(lambda p: os.path.abspath(p), args.volume))
-    volume_map = "-v " + (" -v ".join(paths))
+    volume_map = "--volume " + (" --volume ".join(paths))
   docker_run_cmd = f"docker run --privileged --detach --publish 127.0.0.1:{args.ssh_port}:22/tcp {volume_map} {args.image_name}"
 
   if args.sudo:

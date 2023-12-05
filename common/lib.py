@@ -65,7 +65,7 @@ def run():
 
   logging.info(docker_run_cmd)
   container_id = subprocess.check_output(docker_run_cmd, shell=True, text=True).strip()
-  user_name = subprocess.check_output('id -u -n', shell=True, text=True).strip()
+  user_name = 'docker' # subprocess.check_output('id -u -n', shell=True, text=True).strip()
 
   sudo = "sudo " if args.sudo else ""
   logging.info(f"you can view the output by run: `{sudo}docker logs -f {container_id}`")

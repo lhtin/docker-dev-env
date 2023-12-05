@@ -14,8 +14,10 @@ set auto-load safe-path ~
 # svn co svn://gcc.gnu.org/svn/gcc/trunk/libstdc++-v3/python
 python
 
-import sys
-sys.path.insert(0, '~/gdb-python')
+import sys, os
+home_dir = os.path.expanduser('~')
+gdb_python_dir = f'{home_dir}/.gdb-python'
+sys.path.insert(0, gdb_python_dir)
 from libstdcxx.v6.printers import register_libstdcxx_printers
 register_libstdcxx_printers (None)
 

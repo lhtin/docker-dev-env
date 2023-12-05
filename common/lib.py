@@ -10,7 +10,7 @@ def init_logger(log_path):
           level=logging.INFO,
           format="[%(levelname)s][%(asctime)s] %(message)s",
           handlers=[
-            logging.FileHandler(log_path, mode='w'),
+            logging.FileHandler(log_path, mode='a'),
             logging.StreamHandler()
           ]
   )

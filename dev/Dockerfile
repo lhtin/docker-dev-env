@@ -13,11 +13,11 @@ RUN apt-get install -y autoconf automake autotools-dev curl python3 python3-pip 
                        expect
 RUN apt-get install -y zsh wget sudo vim openssh-server openssh-client htop gdb
 
-ARG DOCKER_USER_ID=10000
-ARG DOCKER_USER_NAME=dev1
-ARG DOCKER_GROUP_ID=1000
-ARG DOCKER_GROUP_NAME=dev
-ARG DOCKER_HOME_DIR=/home/dev1
+ARG DOCKER_USER_ID
+ARG DOCKER_USER_NAME
+ARG DOCKER_GROUP_ID
+ARG DOCKER_GROUP_NAME
+ARG DOCKER_HOME_DIR
 
 # 23.10 will add default no-root user ubuntu which use 1000 user id, remove the default user
 RUN userdel -r ubuntu || true
@@ -45,9 +45,6 @@ RUN mv ~/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 RUN mv ~/zsh-syntax-highlighting ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 RUN sed -i -E "s/plugins=\(git\)/plugins=\(git zsh-autosuggestions zsh-syntax-highlighting\)/" ~/.zshrc
 RUN echo "1" | sudo -S chsh -s $(which zsh)
-
-# modify pip3 source
-RUN pip3 config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 
 # start ssh server
 RUN ssh-keygen -A

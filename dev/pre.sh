@@ -3,7 +3,7 @@
 set -ex
 
 rm -rf home
-mkdir -p home
+mkdir -p home/.config/pip
 
 unzip ../common/ohmyzsh-master.zip
 mv ohmyzsh-master home/.oh-my-zsh
@@ -21,3 +21,5 @@ cp ../common/config/.vimrc \
    ../common/config/.gdbinit \
    ../common/config/.gitconfig \
    home/
+
+cp ../common/config/pip.conf home/.config/pip/

@@ -55,8 +55,8 @@ def run():
   init_logger("run.log")
 
   volume_map = ""
-  paths = map(lambda p: p + ":" + p, map(lambda p: os.path.abspath(p), args.volume))
   if args.volume:
+    paths = map(lambda p: p + ":" + p, map(lambda p: os.path.abspath(p), args.volume))
     volume_map = "-v " + (" -v ".join(paths))
   docker_run_cmd = f"docker run --privileged --detach --publish 127.0.0.1:{args.ssh_port}:22/tcp {volume_map} {args.image_name}"
 

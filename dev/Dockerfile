@@ -11,7 +11,7 @@ RUN apt-get install -y autoconf automake autotools-dev curl python3 python3-pip 
                        bison flex texinfo gperf libtool patchutils bc zlib1g-dev \
                        libexpat-dev ninja-build git cmake libglib2.0-dev libpixman-1-dev \
                        expect
-RUN apt-get install -y zsh wget sudo vim openssh-server openssh-client htop
+RUN apt-get install -y zsh wget sudo vim openssh-server openssh-client htop gdb
 
 ARG DOCKER_USER_ID=10000
 ARG DOCKER_USER_NAME=dev1

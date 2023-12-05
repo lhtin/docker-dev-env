@@ -36,7 +36,7 @@ def build():
   group: {group_name}({group_id})
 """)
 
-  docker_build_cmd = f"docker build -f {args.dockerfile} -t {args.image_name} --build-arg DOCKER_USER_ID={user_id} --build-arg DOCKER_USER_NAME={user_name} --build-arg DOCKER_GROUP_ID={group_id} --build-arg DOCKER_GROUP_NAME={group_name} --build-arg DOCKER_HOME_DIR={home_dir} {args.build_dir}"
+  docker_build_cmd = f"docker build --tag {args.image_name} --build-arg DOCKER_USER_ID={user_id} --build-arg DOCKER_USER_NAME={user_name} --build-arg DOCKER_GROUP_ID={group_id} --build-arg DOCKER_GROUP_NAME={group_name} --build-arg DOCKER_HOME_DIR={home_dir} {args.build_dir} --file {args.dockerfile}"
 
   if args.sudo:
     docker_build_cmd = "sudo " + docker_build_cmd
@@ -58,7 +58,7 @@ def run():
   paths = map(lambda p: p + ":" + p, map(lambda p: os.path.abspath(p), args.volume))
   if args.volume:
     volume_map = "-v " + (" -v ".join(paths))
-  docker_run_cmd = f"docker run -d -p 127.0.0.1:{args.ssh_port}:22/tcp {volume_map} {args.image_name}"
+  docker_run_cmd = f"docker run --privileged --detach --publish 127.0.0.1:{args.ssh_port}:22/tcp {volume_map} {args.image_name}"
 
   if args.sudo:
     docker_run_cmd = "sudo " + docker_run_cmd

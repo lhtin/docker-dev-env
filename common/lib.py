@@ -25,7 +25,7 @@ def build():
   init_logger("build.log")
 
   user_id = subprocess.check_output('id -u', shell=True, text=True).strip()
-  user_name = subprocess.check_output('id -u -n', shell=True, text=True).strip()
+  user_name = "docker" # subprocess.check_output('id -u -n', shell=True, text=True).strip()
   group_id = subprocess.check_output('id -g', shell=True, text=True).strip()
   group_name = subprocess.check_output('id -g -n', shell=True, text=True).strip()
   home_dir = os.path.expanduser('~')

@@ -6,5 +6,5 @@
 ./run.py --image-name test-image-tintin --ssh-port 2222
 
 # 使用SSH登录该镜像
-ssh user_name@localhost -p 2222
+ssh docker@localhost -p 2222
 ```

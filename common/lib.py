@@ -24,10 +24,10 @@ def build():
   args = parser.parse_args()
   init_logger("build.log")
 
-  user_id = subprocess.check_output('id -u', shell=True, text=True).strip()
-  user_name = "docker" # subprocess.check_output('id -u -n', shell=True, text=True).strip()
-  group_id = subprocess.check_output('id -g', shell=True, text=True).strip()
-  group_name = subprocess.check_output('id -g -n', shell=True, text=True).strip()
+  user_id = subprocess.check_output('id -u', shell=True, universal_newlines=True).strip()
+  user_name = "docker" # subprocess.check_output('id -u -n', shell=True, universal_newlines=True).strip()
+  group_id = subprocess.check_output('id -g', shell=True, universal_newlines=True).strip()
+  group_name = subprocess.check_output('id -g -n', shell=True, universal_newlines=True).strip()
   home_dir = os.path.expanduser('~')
 
   logging.info(f"""Create a docker image with:
@@ -64,8 +64,8 @@ def run():
     docker_run_cmd = "sudo " + docker_run_cmd
 
   logging.info(docker_run_cmd)
-  container_id = subprocess.check_output(docker_run_cmd, shell=True, text=True).strip()
-  user_name = 'docker' # subprocess.check_output('id -u -n', shell=True, text=True).strip()
+  container_id = subprocess.check_output(docker_run_cmd, shell=True, universal_newlines=True).strip()
+  user_name = 'docker' # subprocess.check_output('id -u -n', shell=True, universal_newlines=True).strip()
 
   sudo = "sudo " if args.sudo else ""
   logging.info(f"you can view the output by run: `{sudo}docker logs -f {container_id}`")

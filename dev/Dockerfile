@@ -11,8 +11,9 @@ RUN apt-get install -y autoconf automake autotools-dev curl python3 python3-pip 
                        bison flex texinfo gperf libtool patchutils bc zlib1g-dev \
                        libexpat-dev ninja-build git cmake libglib2.0-dev libpixman-1-dev \
                        expect
-RUN apt-get install -y zsh wget sudo vim openssh-server openssh-client htop gdb locales apt-utils
-RUN dpkg-reconfigure --frontend noninteractive locales apt-utils
+RUN apt-get install -y zsh wget sudo vim openssh-server openssh-client htop gdb locales apt-utils \
+                       dialog
+RUN locale-gen en_US.UTF-8
 
 ARG DOCKER_USER_ID
 ARG DOCKER_USER_NAME

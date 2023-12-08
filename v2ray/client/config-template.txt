@@ -1,0 +1,105 @@
+{
+  "log": {
+    "access": "Access.log",
+    "error": "Error.log",
+    "loglevel": "info"
+  },
+  "inbounds": [
+    {
+      // 根据域名动态代理
+      "tag": "dynamic",
+      "protocol": "socks",
+      "listen": "127.0.0.1",
+      "port": 10808,
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      },
+      "settings": {
+        "auth": "noauth",
+        "udp": true
+      }
+    },
+    {
+      // 全部走代理
+      "tag": "all",
+      "protocol": "socks",
+      "listen": "127.0.0.1",
+      "port": 10809,
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      },
+      "settings": {
+        "auth": "noauth",
+        "udp": true
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "tag": "direct",
+      "protocol": "freedom"
+    },
+    {
+      "tag": "block",
+      "protocol": "blackhole"
+    },
+    {
+      "tag": "proxy",
+      "protocol": "vmess",
+      "settings": {
+        "vnext": [
+          {
+            "address": "{address}",
+            "ps": "{ps}",
+            "port": {port},
+            "users": [
+              {
+                "id": "{id}"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "tlsSettings": {
+          "serverName": "{host}"
+        },
+        "wsSettings": {
+          "path": "{path}",
+          "headers": {
+            "Host": "{host}"
+          }
+        }
+      }
+    }
+  ],
+  "routing": {
+    "domainStrategy": "AsIs",
+    "rules": [
+      {
+        "type": "field",
+        "inboundTag": "all",
+        "outboundTag": "proxy"
+      },
+      {
+        "type": "field",
+        // 如果域名在以下范围内，则走代理
+        "domains": [
+          "domain:bing.com",
+          "domain:youtube.com"
+        ],
+        "inboundTag": "dynamic",
+        "outboundTag": "proxy"
+      }
+    ]
+  }
+}

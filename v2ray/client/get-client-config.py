@@ -30,3 +30,5 @@ for s in server_list:
     ps = server_config["add"]
     open(f"./config{id}-{ps}.json", "w").write(config)
     id = id + 1
+
+# 测试代理是否生效：all_proxy=socks5://127.0.0.1:10808 curl -L youtube.com

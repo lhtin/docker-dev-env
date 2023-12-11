@@ -93,6 +93,7 @@
       {
         "type": "field",
         // 如果域名在以下范围内，则走代理
+        // 添加更多域名
         "domains": [
           "domain:bing.com",
           "domain:youtube.com"

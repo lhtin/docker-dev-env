@@ -5,18 +5,28 @@ import requests
 import base64
 import json
 
-def b64decode (s):
+
+def b64decode(s):
   return str(base64.b64decode(s), "utf-8")
+
 
 parser = argparse.ArgumentParser(description="")
 parser.add_argument('--url', type=str, required=False, help="Subscript URL")
+parser.add_argument('--vmess-list', type=str, required=False,
+                    help="Local vmess server list")
 args = parser.parse_args()
 
-print (f"Fetching: {args.url}")
-server_txt = b64decode(requests.get(args.url).text)
+if args.url:
+  print(f"Fetching: {args.url}")
+  server_txt = b64decode(requests.get(args.url).text)
+  open("./server-config.txt", "w").write(server_txt)
+elif args.vmess_list:
+  server_txt = open(args.vmess_list).read()
+else:
+  raise Exception("You must specify --url or --vmess-list option")
+
 server_list = server_txt.splitlines()
 config_template = open("./config-template.txt").read()
-open("./server-config.txt", "w").write(server_txt)
 id = 0
 for s in server_list:
   if s.startswith("vmess://"):

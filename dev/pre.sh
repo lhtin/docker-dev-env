@@ -22,4 +22,3 @@ cp ../common/config/.vimrc \
    ../common/config/.gitconfig \
    home/
 
-cp ../common/config/pip.conf home/.config/pip/

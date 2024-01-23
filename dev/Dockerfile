@@ -48,6 +48,11 @@ RUN mv ~/zsh-syntax-highlighting ~/.oh-my-zsh/custom/plugins/zsh-syntax-highligh
 RUN sed -i -E "s/plugins=\(git\)/plugins=\(git zsh-autosuggestions zsh-syntax-highlighting\)/" ~/.zshrc
 RUN echo "1" | sudo -S chsh -s $(which zsh)
 
+# modify pip3 source
+RUN pip3 config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+RUN pip3 config set global.break-system-packages true
+RUN pip3 install pyelftools
+
 # start ssh server
 RUN ssh-keygen -A
 CMD echo "1" | sudo -S sshd -D -e

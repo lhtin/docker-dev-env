@@ -50,7 +50,7 @@ def run():
   parser.add_argument('--image-name', type=str, required=True, help="the real image name will suffix with the use name")
   parser.add_argument('--ssh-port', type=str, required=True, help="The ssh port to connect the container")
   parser.add_argument('--sudo', action="store_true", default=False, help="Use sudo to run docker?")
-  parser.add_argument('--volume', nargs="+", help="Volume map when run docker, like --volume path1 path2 to -v path1:path1 -v path2:paht2")
+  parser.add_argument('--volume', nargs="+", help="Volume map when run docker, like --volume path1 path2 to --volume path1:path1 --volume path2:paht2")
   args = parser.parse_args()
   init_logger("run.log")
 
@@ -58,6 +58,8 @@ def run():
   if args.volume:
     paths = map(lambda p: p + ":" + p, map(lambda p: os.path.abspath(p), args.volume))
     volume_map = "--volume " + (" --volume ".join(paths))
+    paths = map(lambda p: f"type=bind,source={p},target={p}", map(lambda p: os.path.abspath(p), args.volume))
+    volume_map = "--mount " + (" --mount ".join(paths))
   docker_run_cmd = f"docker run --privileged --detach --publish 127.0.0.1:{args.ssh_port}:22/tcp {volume_map} {args.image_name}"
 
   if args.sudo:

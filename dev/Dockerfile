@@ -12,7 +12,7 @@ RUN apt-get install -y autoconf automake autotools-dev curl python3 python3-pip 
                        libexpat-dev ninja-build git cmake libglib2.0-dev libpixman-1-dev \
                        expect device-tree-compiler dejagnu
 RUN apt-get install -y zsh wget sudo vim openssh-server openssh-client htop gdb locales apt-utils \
-                       dialog
+                       dialog zip
 RUN locale-gen en_US.UTF-8
 
 ARG DOCKER_USER_ID

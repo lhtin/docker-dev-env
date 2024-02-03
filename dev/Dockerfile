@@ -10,7 +10,7 @@ RUN apt-get install -y autoconf automake autotools-dev curl python3 python3-pip 
                        libmpc-dev libmpfr-dev libgmp-dev gawk build-essential \
                        bison flex texinfo gperf libtool patchutils bc zlib1g-dev \
                        libexpat-dev ninja-build git cmake libglib2.0-dev libpixman-1-dev \
-                       expect device-tree-compiler dejagnu
+                       expect device-tree-compiler dejagnu libgfortran5 gfortran
 RUN apt-get install -y zsh wget sudo vim openssh-server openssh-client htop gdb locales apt-utils \
                        dialog zip
 RUN locale-gen en_US.UTF-8
@@ -20,6 +20,10 @@ ARG DOCKER_USER_NAME
 ARG DOCKER_GROUP_ID
 ARG DOCKER_GROUP_NAME
 ARG DOCKER_HOME_DIR
+
+# set timezone
+RUN sudo ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+RUN sudo dpkg-reconfigure -fnoninteractive tzdata
 
 # 23.10 will add default no-root user ubuntu which use 1000 user id, remove the default user
 RUN userdel -r ubuntu || true
